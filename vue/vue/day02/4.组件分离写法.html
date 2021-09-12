@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../../js/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <cpm></cpm>
+    </div>
+
+    <template id="cpm">
+        <div>
+            {{title}}
+        </div>
+    </template>
+
+    <!-- <script type="text/x-template" id="cpm">
+       <div>
+            hhhhh
+        </div>
+    </script> -->
+</body>
+<script>
+    // Vue.component('cpm', {
+    //     template: '#cpm',
+    //     data() {
+    //         return {
+    //             title: '标题'
+    //         }
+    //     }
+    // });
+
+
+    const app = new Vue({
+        el: '#app',
+        data: {},
+        components: {
+            'cpm': {
+                template: '#cpm',
+                // 组件存放数据 (数据必须是以函数形式存放)
+                // 如果是对象，多次调用修改2，1也会发送改变(同一地址)
+                // 函数不是使用同一地址
+                data() {
+                    return {
+                        title: '标题'
+                    }
+                }
+            }
+        }
+    })
+</script>
+
+</html>

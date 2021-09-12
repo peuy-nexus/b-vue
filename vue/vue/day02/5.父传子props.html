@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../../js/vue.js"></script>
+</head>
+
+<body>
+    <!-- 父传子 将父元素的数值传递给模板元素 -->
+    <div id="app">
+        <cpn :cmessage="message" :carr="arr"></cpn>
+    </div>
+
+    <!-- 模板元素 -->
+    <template id="cpn">
+        <div>
+        <span>{{carr}}</span>
+        <p>{{cmessage}}</p>
+     </div>
+    </template>
+
+</body>
+<script>
+    // 定义模板元素
+    const cpn = {
+        template: '#cpn',
+        props: {
+            cmessage: {
+                type: String,
+                required: true,
+                default: 'aaa'
+            },
+            carr: {
+                type: Array,
+                // 数组对象的默认值必须使用函数形式
+                default () {
+                    return []
+                }
+            }
+        },
+
+    }
+
+    const app = new Vue({
+        el: '#app',
+        data: {
+            message: 'hello world',
+            // arr: ['zhangs', 'lisi', 'wangw']
+        },
+        // 接收模板元素
+        components: {
+            cpn
+        }
+    })
+</script>
+
+</html>

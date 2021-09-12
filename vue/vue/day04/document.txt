@@ -1,0 +1,56 @@
+安装cli3
+ npm install -g @vue/cli@3.2.1
+ 
+插件cli3脚手架
+vue create 文件名字
+
+/////////////////////////////////////////////////////////////////////////////////
+
+1. 标签跳转与展示router-link 和 router-view
+    link路由跳转，路径有内置标签to和router中index.js决定
+    view类似无刷新加载页面
+
+        1.2 router-link默认原生中history.pushState({data},'title',[跳转路径])    replaceState({data},'title',[跳转路径]) 替换原有路径
+         <router-link to="/" replace >Home</router-link> 将默认替换为replaceState
+
+
+2. 标签类型转换
+    <router-link to="/" >Home</router-link> 默认是转换为a标签
+    <router-link to="/" tag="button">Home</router-link> |  tag="button"可以将其转换为button标签 同理div等等
+
+3. 自动给焦点元素添加class
+    3.1 在需要的元素的行内添加active-class="active"
+    3.2 在router的index.js中的router对象添加linkActiveClass（全局）
+
+4. methods跳转
+    homeClick(){
+        this.$router.push('/home') // push可以换为replace
+        },
+
+5. 获取活跃用户的id
+    this.$route.params.xxx  //xxx是在路由里面定义的id（User/:userId）
+
+6. elementUi导入
+    npm i element-ui -S
+
+7. 安装 SASS 加载器
+    npm install sass-loader node-sass --save-dev
+
+8. day04-02路由传值 
+    8.1 params  User.vue
+        配置路由格式: /router/:id  id可以自定义
+        传递方式: 在path后跟上对应的值 eg: :to="/user + id"   id可以在data(){}在设置
+        传递后形成的路径: /router/id
+    
+    8.2 query   Profile
+        配置路由格式: /router 普通配置
+        传递方式: 对象中使用query的key作为传递方式 eg: :to="{path:'/profile',query{name:'zhangs',sex'男'}}"
+        传递后形成的路径: /router?name=zhangs&&sex=男
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+安装axios 
+    npm install axios@0.18.0 --save
+    商城接口：http://123.207.32.32:8000/home/multidata
+    网易云接口：https://autumnfish.cn/

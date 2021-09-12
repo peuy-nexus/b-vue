@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>双向绑定</title>
+    <script src="../../js/vue.js"></script>
+</head>
+
+<body>
+    <!--1. v-model基本使用 
+        
+    -->
+    <div id="app">
+        <input type="text" v-model="message">
+        <span>{{message}}</span>
+    </div>
+
+    <br>
+    <hr>
+
+    <!--2. v-model配合radio   v-model显示value值-->
+    <div id="sex">
+        <label for="male">
+            <input type="radio" value="男" v-model="sex">男
+        </label>
+        <label for="female">
+            <input type="radio" value="女" v-model="sex">女
+        </label>
+        <p>性别：{{sex}}</p>
+    </div>
+
+    <br>
+    <hr>
+
+    <!-- 3. v-model控制两个标签 -->
+    <div id="agree">
+        <label for="agree">
+            <input type="checkbox" id="agree" v-model="isAgree">同意
+        </label>
+        <button :disabled="!isAgree">下一步</button>
+    </div>
+
+
+    <br>
+    <hr>
+    <!-- 4. v-model控制多个checkbox -->
+    <div id="hobby">
+        <label for="hobby">
+        <input type="checkbox" value="篮球" v-model="hobbies">篮球
+        <input type="checkbox" value="足球" v-model="hobbies">足球
+        <input type="checkbox" value="乒乓球" v-model="hobbies">乒乓球
+        <input type="checkbox" value="排球" v-model="hobbies">排球
+        </label>
+        <h2>爱好有: {{hobbies}}</h2>
+    </div>
+
+    <br>
+    <hr>
+    <!-- 5. v-model和select  -->
+    <div id="fruit">
+        <select v-model="fruit">
+            <option value="苹果">苹果</option>
+            <option value="香蕉">香蕉</option>
+            <option value="桃子">桃子</option>
+        </select>
+        <h2>{{fruit}}</h2>
+
+        <select v-model="fruits" multiple>
+            <option value="苹果">苹果</option>
+            <option value="香蕉">香蕉</option>
+            <option value="桃子">桃子</option>
+        </select>
+        <h2>多个水果：{{fruits}}</h2>
+    </div>
+
+</body>
+<script>
+    // 1. v-model基本使用
+    const app = new Vue({
+        el: '#app',
+        data: {
+            message: '双向绑定'
+        },
+        methods: {}
+    });
+
+    // 2. v-model配合radio
+    const sex = new Vue({
+        el: '#sex',
+        data: {
+            sex: '男'
+        },
+        methods: {}
+    })
+
+    // 3. v-model控制两个标签
+    const agree = new Vue({
+        el: '#agree',
+        data: {
+            isAgree: false
+        }
+    })
+
+    // 4. v-model控制多个checkbox
+    const hobby = new Vue({
+        el: '#hobby',
+        data: {
+            hobbies: []
+        }
+    })
+
+    // 5. v-model和select
+    const fruit = new Vue({
+        el: '#fruit',
+        data: {
+            fruit: '苹果',
+            fruits: []
+        }
+    })
+</script>
+
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../../js/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <cpn></cpn>
+        <cpn>
+            <!-- 2. slot-scope="slot" -->
+            <template slot-scope="slot">
+               <span v-for="item in slot.data">{{item}} - </span>
+            </template>
+        </cpn>
+
+    </div>
+
+    <template id="cpn">
+        <div>
+            <!-- 1.  :data="message"  -->
+            <slot :data="message">
+                <li v-for="item in message">{{item}}</li>
+            </slot>
+        </div>
+    </template>
+</body>
+<script>
+    const app = new Vue({
+        el: '#app',
+        data: {},
+        methods: {},
+        components: {
+            cpn: {
+
+                template: '#cpn',
+                data() {
+                    return {
+                        message: [1, 2, 3, 4, 5, 6]
+                    }
+                }
+
+            }
+        }
+    })
+</script>
+
+</html>

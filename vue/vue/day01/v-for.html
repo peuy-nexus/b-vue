@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <ul>
+            <li v-for='(item,index) in arr' :id='item' v-show='isShow'>
+                {{index+1}}: {{item}}
+            </li>
+        </ul>
+        <div v-for='item in arrTable' :title='item.name' @click='ChangeArr' v-show='item.age>18'>
+            {{item.name}}
+        </div>
+    </div>
+</body>
+<script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+            arr: ['one', 'two', 'three', 'four', 'five'],
+            arrTable: [{
+                name: '马铃薯炒蛋',
+                age: 18
+            }, {
+                name: '蛋炒马拉松',
+                age: 22
+            }],
+            isShow: true
+        },
+        methods: {
+            ChangeArr: function() {
+                this.isShow = !this.isShow
+
+            }
+        }
+    })
+</script>
+
+</html>

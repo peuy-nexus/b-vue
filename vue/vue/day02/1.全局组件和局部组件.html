@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../../js/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <my-stu></my-stu>
+    </div>
+    <div id="bbb">
+        <stu></stu>
+        <my-stu></my-stu>
+    </div>
+</body>
+<script>
+    // 1.创建组件构造器
+    const stuC = Vue.extend({
+        template: `
+        <h2> hhhhhhhh </h2>
+        `
+    })
+
+    // 2. component注册组件
+    // 全局组件
+    Vue.component('stu', stuC);
+
+    const app = new Vue({
+        el: '#app',
+        data: {},
+        methods: {},
+        // 局部主键
+        components: {
+            'my-stu': stuC
+        }
+    })
+
+
+    const bbb = new Vue({
+        el: '#bbb'
+    })
+</script>
+
+</html>

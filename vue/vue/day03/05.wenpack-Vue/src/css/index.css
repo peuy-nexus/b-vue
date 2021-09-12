@@ -1,0 +1,9 @@
+div {
+  font-size: 16px;
+  color: #00ff4c;
+}
+main {
+  height: 1038px;
+  width: auto;
+  background: url(../img/biz.jpg) no-repeat;
+}

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../../js/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <cpn @increment="change"></cpn>
+        <!-- <button @click="change"></button> -->
+        <span>{{total}}</span>
+    </div>
+
+    <!-- 1. 创建模板样式 -->
+    <template id="cpn">
+        <div>
+            <button @click="inc">+</button>
+            <button @click="dec">-</button>
+        </div>
+    </template>
+</body>
+<script>
+    // 子
+    // 2. 创建子组件 
+    let cpn = {
+        template: '#cpn',
+        // 2.1 使用函数返回要传的值
+        data() {
+            return {
+                counter: 0
+            }
+        },
+        methods: {
+            // 2.2 定义方法，方法写入模板文件里面，方法命是子组件要发送的对象
+            // 2.3 发送方法（父组件调用）和数据（父组件的methods接收）
+            inc() {
+                this.counter++;
+                console.log(1);
+                this.$emit('increment', this.counter)
+            },
+            dec() {
+                this.counter--;
+                console.log(2);
+                this.$emit('increment', this.counter)
+            }
+        }
+    }
+
+    // 3. 父
+    let app = new Vue({
+        el: '#app',
+        // 3.1 创建要接收子组件的元素
+        data: {
+            total: 0
+        },
+        methods: {
+            // 3.2 接收子组件，父组件调用change
+            change(counter) {
+                console.log(3);
+                this.total = counter;
+            }
+        },
+        components: {
+            cpn
+        }
+
+    })
+</script>
+
+</html>

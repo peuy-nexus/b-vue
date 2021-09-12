@@ -1,0 +1,9 @@
+全局依赖
+npm install webpack@3.6.0 -g
+
+局部安装
+npm install webpack@3.6.0 --asve-dev   // 开发时依赖
+
+web配置好了打包(webpack.config.js 和 package.json)
+npm run build  // 优先执行本地
+webpack // 全局

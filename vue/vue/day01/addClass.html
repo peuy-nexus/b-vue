@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .box {
+            border: 10px solid seagreen
+        }
+        
+        .box_size {
+            height: 100px;
+            width: 100px;
+        }
+        
+        .box_color {
+            background: steelblue
+        }
+    </style>
+</head>
+<div id="app">
+    <h3>普通形式</h3>
+    <div class="box box_size box_color">123</div>
+    <h3>v-bind的形式</h3>
+    <div :class="box">123</div>
+    <br>
+
+    <div :class=" 'box box_size box_color' ">正常形式</div>
+    <br>
+
+    <div :class="{[box]:true, [size]:true, [color]:true}">对象添加</div>
+    <br>
+
+    <div :class="[size,color,box]">数组添加</div>
+
+</div>
+
+<body>
+    <script src="https://cdn.bootcss.com/vue/2.6.10/vue.js"></script>
+    <script>
+        new Vue({
+            el: "#app",
+            data: {
+                msg: '我爱你',
+                box: 'box',
+                class_flag: true,
+                size: 'box_size',
+                color: 'box_color'
+            }
+        })
+    </script>
+</body>
+
+</html>
